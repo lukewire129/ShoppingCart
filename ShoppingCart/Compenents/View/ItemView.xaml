@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ScrollView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ShoppingCart.Compenents.ViewModel"
+             x:Class="ShoppingCart.Compenents.View.ItemView"
+            x:Name="this">
+    <ScrollView.BindingContext>
+        <vm:ItemViewModel/>
+    </ScrollView.BindingContext>
+    <StackLayout BindableLayout.ItemsSource="{Binding shoppingItems}" Orientation="Vertical" Spacing="10">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Name}" Grid.Column="0" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding Price}" Grid.Column="1" VerticalTextAlignment="Center"/>
+                    <Button Text="선택" Padding="10" VerticalOptions="Center" HorizontalOptions="Center"
+                                IsEnabled="{Binding IsSelected}" Grid.Column="2" Command="{Binding Source={x:Reference this}, Path=BindingContext.SelectItem}"  CommandParameter="{Binding .}"/>
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+</ScrollView>

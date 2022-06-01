@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ShoppingCart.ViewModel"
+             xmlns:Compenent="clr-namespace:ShoppingCart.Compenents.View"
+             x:Class="ShoppingCart.MainPage" x:Name="thisPage">
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Compenent:ItemView x:Name="Items" VerticalOptions="Start" HorizontalOptions="Center" Margin="20, 20" />
+        <VerticalStackLayout x:Name="ShoppingBascketView">
+            <Compenent:ItemsBascketView x:Name="CalculateView" Grid.Row="1" />
+            <HorizontalStackLayout HorizontalOptions="End" Grid.Row="2">
+                <Label Text="총 계 :"/>
+                <Label Text="{Binding SumarryPrice}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
